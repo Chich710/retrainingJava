@@ -1,27 +1,27 @@
 package com.example.ex1.controller;
 
-import com.example.ex1.model.User;
-import com.example.ex1.service.TestServiceInterface;
+import com.example.ex1.entity.UserDto;
+import com.example.ex1.service.UserServiceInterface;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class TestController {
+public class UserController {
 
-    private final TestServiceInterface testServiceInterface;
+    private final UserServiceInterface testServiceInterface;
 
-    public TestController(TestServiceInterface testServiceInterface) {
+    public UserController(UserServiceInterface testServiceInterface) {
         this.testServiceInterface = testServiceInterface;
     }
 
     @GetMapping("/first")
-    public User getStartPage(
+    public UserDto getStartPage(
             @RequestParam String name,
             @RequestParam String age
     ) {
-        User user = new User();
+        UserDto user = new UserDto();
         user.setName(name);
         user.setAge(age);
 
@@ -29,10 +29,10 @@ public class TestController {
     }
 
     @PostMapping("/create")
-    public List<User> createUser(
-            @RequestBody User user
+    public List<UserDto> createUser(
+            @RequestBody UserDto user
     ) {
-        List<User> users = testServiceInterface.addNewUser(user);
+        List<UserDto> users = testServiceInterface.addNewUser(user);
 
         return users;
     }

@@ -1,7 +1,7 @@
-package com.example.ex1.model;
+package com.example.ex1.entity;
 
 //@Data
-public class User {
+public class UserDto {
     private String name;
     private String age;
 
